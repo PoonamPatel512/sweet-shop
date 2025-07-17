@@ -30,6 +30,13 @@ class SweetService {
     }
     return null;
   }
+
+  // Search sweets by name (case-insensitive)
+  searchSweets(name) {
+    return this.sweets.filter((sweet) =>
+      sweet.name.toLowerCase().includes(name.toLowerCase())
+    );
+  }
 }
 
 module.exports = SweetService;
