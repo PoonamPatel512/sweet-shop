@@ -45,3 +45,28 @@ describe('SweetService - Get All Sweets', () => {
   });
 });
 
+describe('SweetService - Edit Sweet', () => {
+  let service;
+
+  beforeEach(() => {
+    service = new SweetService();
+    service.addSweet(new Sweet(1, 'Ladoo', 'Desi', 100, 10));
+  });
+
+  test('should edit an existing sweet', () => {
+    const updatedSweet = new Sweet(1, 'Motichoor Ladoo', 'Desi', 120, 15);
+    const result = service.editSweet(1, updatedSweet);
+
+    expect(result.name).toBe('Motichoor Ladoo');
+    expect(result.price).toBe(120);
+    expect(result.quantity).toBe(15);
+  });
+
+  test('should return null if sweet not found', () => {
+    const updatedSweet = new Sweet(2, 'Barfi', 'Milk', 80, 5);
+    const result = service.editSweet(2, updatedSweet);
+
+    expect(result).toBeNull();
+  });
+});
+
