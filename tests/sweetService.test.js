@@ -93,3 +93,31 @@ describe('SweetService - Delete Sweet', () => {
   });
 });
 
+describe('SweetService - Search Sweets', () => {
+  let service;
+
+  beforeEach(() => {
+    service = new SweetService();
+    service.addSweet(new Sweet(1, 'Kaju Katli', 'Indian', 200, 4));
+    service.addSweet(new Sweet(2, 'Gulab Jamun', 'Indian', 120, 10));
+    service.addSweet(new Sweet(3, 'Rasgulla', 'Bengali', 110, 8));
+  });
+
+  test('should return sweets matching the search query', () => {
+    const results = service.searchSweets('gulab');
+
+    expect(results.length).toBe(1);
+    expect(results[0].name).toBe('Gulab Jamun');
+  });
+
+  test('should return multiple sweets if matched', () => {
+    const results = service.searchSweets('a');
+    expect(results.length).toBeGreaterThan(1);
+  });
+
+  test('should return empty array if no match found', () => {
+    const results = service.searchSweets('Chocolate');
+    expect(results.length).toBe(0);
+  });
+});
+
