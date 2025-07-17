@@ -21,13 +21,17 @@ A simple, test-driven application to manage a sweet shop’s inventory using **J
 ---
 
 🛠️ Setup Instructions
-1. Clone the repository:
+1. *Clone the repo*
 bash
-git clone https://github.com/PoonamPatel512/sweet-shop.git  
-cd sweet-shop
-2. Install dependencies:
+git clone https://github.com/gargi-patel11/SweetShop
+cd SweetShop
+
+
+2. *Install Dependencies*
 bash
 npm install
-3. Run all tests using Jest:
+
+
+3. *For tests*
 bash
 npm test
