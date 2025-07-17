@@ -148,3 +148,24 @@ describe('SweetService - Purchase Sweet', () => {
   });
 });
 
+describe('SweetService - Restock Sweet', () => {
+  let service;
+
+  beforeEach(() => {
+    service = new SweetService();
+    service.addSweet(new Sweet(1, 'Jalebi', 'Mithai', 80, 5));
+  });
+
+  test('should increase quantity after restocking', () => {
+    service.restockSweet(1, 10);
+    const sweets = service.getAllSweets();
+    expect(sweets[0].quantity).toBe(15);
+  });
+
+  test('should throw error if sweet not found', () => {
+    expect(() => {
+      service.restockSweet(99, 5);
+    }).toThrow('Sweet not found');
+  });
+});
+
