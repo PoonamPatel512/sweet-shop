@@ -121,3 +121,30 @@ describe('SweetService - Search Sweets', () => {
   });
 });
 
+describe('SweetService - Purchase Sweet', () => {
+  let service;
+
+  beforeEach(() => {
+    service = new SweetService();
+    service.addSweet(new Sweet(1, 'Ladoo', 'Mithai', 100, 10));
+  });
+
+  test('should decrease quantity after purchase', () => {
+    service.purchaseSweet(1, 3);
+    const sweets = service.getAllSweets();
+    expect(sweets[0].quantity).toBe(7);
+  });
+
+  test('should throw error for insufficient stock', () => {
+    expect(() => {
+      service.purchaseSweet(1, 20);
+    }).toThrow('Insufficient stock');
+  });
+
+  test('should throw error if sweet ID not found', () => {
+    expect(() => {
+      service.purchaseSweet(99, 1);
+    }).toThrow('Sweet not found');
+  });
+});
+
