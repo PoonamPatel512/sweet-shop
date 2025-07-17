@@ -1,4 +1,5 @@
 const SweetService = require('../src/services/SweetService');
+const Sweet = require('../src/models/sweet');
 
 describe('SweetService - Add Sweet', () => {
   let service;
@@ -29,8 +30,8 @@ describe('SweetService - Get All Sweets', () => {
 
   beforeEach(() => {
     service = new SweetService();
-    service.addSweet(new Sweet('Ladoo', 100));
-    service.addSweet(new Sweet('Barfi', 150));
+    service.addSweet(new Sweet(1, 'Ladoo', 'Festival', 100, 50));
+    service.addSweet(new Sweet(2, 'Barfi', 'Milk-Based', 150, 30));
   });
 
   test('should return all sweets', () => {
@@ -39,5 +40,8 @@ describe('SweetService - Get All Sweets', () => {
     expect(sweets.length).toBe(2);
     expect(sweets[0].name).toBe('Ladoo');
     expect(sweets[1].price).toBe(150);
+    expect(sweets[0].category).toBe('Festival');
+    expect(sweets[1].quantity).toBe(30);
   });
 });
+
