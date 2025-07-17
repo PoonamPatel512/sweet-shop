@@ -20,6 +20,16 @@ class SweetService {
     }
     return null;
   }
+
+  // Delete a sweet by ID
+  deleteSweet(id) {
+    const index = this.sweets.findIndex((sweet) => sweet.id === id);
+    if (index !== -1) {
+      const deleted = this.sweets.splice(index, 1)[0]; // remove and return deleted sweet
+      return deleted;
+    }
+    return null;
+  }
 }
 
 module.exports = SweetService;
