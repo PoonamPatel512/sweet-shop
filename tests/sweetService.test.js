@@ -70,3 +70,26 @@ describe('SweetService - Edit Sweet', () => {
   });
 });
 
+describe('SweetService - Delete Sweet', () => {
+  let service;
+
+  beforeEach(() => {
+    service = new SweetService();
+    service.addSweet(new Sweet(1, 'Ladoo', 'Indian', 100, 5));
+    service.addSweet(new Sweet(2, 'Barfi', 'Indian', 150, 3));
+  });
+
+  test('should delete the sweet with the given ID', () => {
+    const deleted = service.deleteSweet(1);
+
+    expect(deleted.name).toBe('Ladoo');
+    expect(service.getAllSweets().length).toBe(1);
+    expect(service.getAllSweets()[0].name).toBe('Barfi');
+  });
+
+  test('should return null if sweet with given ID is not found', () => {
+    const result = service.deleteSweet(99);
+    expect(result).toBeNull();
+  });
+});
+
