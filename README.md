@@ -4,19 +4,6 @@ A simple, test-driven application to manage a sweet shop’s inventory using **J
 
 ---
 
-## 📂 Project Structure
-
-├── src/
-│ ├── models/ # Sweet model
-│ └── services/ # Business logic (SweetService)
-│
-├── tests/ # Jest unit tests
-│
-├── package.json
-└── README.md
-
----
-
 ## ✅ Features
 
 ### 1. Basic Operations
