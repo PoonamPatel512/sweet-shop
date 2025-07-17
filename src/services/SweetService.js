@@ -37,6 +37,17 @@ class SweetService {
       sweet.name.toLowerCase().includes(name.toLowerCase())
     );
   }
+  // Purchase sweet by ID and quantity
+  purchaseSweet(id, quantity) {
+    const sweet = this.sweets.find((s) => s.id === id);
+    if (!sweet) {
+      throw new Error("Sweet not found");
+    }
+    if (sweet.quantity < quantity) {
+      throw new Error("Insufficient stock");
+    }
+    sweet.quantity -= quantity;
+  }
 }
 
 module.exports = SweetService;
